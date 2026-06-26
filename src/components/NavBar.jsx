@@ -25,11 +25,15 @@ const NavBar = () => {
     return (
       <div className="navbar bg-neutral shadow-sm">
         <div className="flex-1">
-          <Link to={"/"} className="btn btn-ghost text-xl">💻 DevTinder</Link>
+          <Link to={"/"} className="btn btn-ghost text-xl">
+            💻 DevTinder
+          </Link>
         </div>
         <div className="flex gap-2">
           <div>
-            <h3 className="mt-1">{user? "Welcome " + user?.firstName + " !" : ""}</h3>
+            {user && (
+              <h3 className="mt-1">{"Welcome " + user?.firstName + " !"}</h3>
+            )}
           </div>
           <div className="dropdown dropdown-end mx-5">
             <div
@@ -58,7 +62,10 @@ const NavBar = () => {
                 </Link>
               </li>
               <li>
-                <a>Settings</a>
+                <Link to={"/connections"}>Connections</Link>
+              </li>
+              <li>
+                <Link to={"/requests"}>Requests</Link>
               </li>
               <li>
                 <a onClick={logout}>Logout</a>
